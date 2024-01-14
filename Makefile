@@ -1,11 +1,9 @@
 all: install test lint
 
 install:
-	python3 -m pip install --upgrade pip &&\
-		pip install -r requirements.txt &&\
-		python3 -m pip install pyinotify pytest virtualenv &&\
-		python3 -m virtualenv ~/.azureDevOps &&\
-		source ~/.azureDevOps/bin/activate &&\
+	python -m pip install --upgrade pip &&\
+                pip install -r requirements.txt &&\
+                python3 -m pip install pyinotify pytest
 		which python3
 test:
 	python3 -m pytest -vv test_hello.py
