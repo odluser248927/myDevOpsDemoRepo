@@ -1,4 +1,4 @@
-name: Pylint
+name: Python application test with Github Actions
 
 on: [push]
 
@@ -16,8 +16,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
+        make install
+    - name: Lint with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        make lint
+    - name: Test with pytest
+      run: |
+        make test
